@@ -1,11 +1,11 @@
 <template>
-  <div id="app">
-    <router-view/>
+  <div class="chat">
+    <h1>This is an chat page</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+  name: 'chat'
 }
 </script>
