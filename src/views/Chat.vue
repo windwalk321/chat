@@ -1,11 +1,16 @@
 <template>
   <div class="chat">
-    <h1>This is an chat page</h1>
+    <chat-navbar />
   </div>
 </template>
 
 <script>
+import ChatNavbar from '../components/ChatNavbar'
+
 export default {
-  name: 'chat'
+  name: 'chat',
+  components: {
+    ChatNavbar
+  }
 }
 </script>
