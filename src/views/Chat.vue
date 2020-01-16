@@ -7,7 +7,16 @@
           <chat-room-list />
         </b-col>
         <b-col cols="8">
-          <chat-message-list />
+          <b-row>
+            <b-col>
+              <chat-message-list />
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col>
+              <chat-message-form />
+            </b-col>
+          </b-row>
         </b-col>
         <b-col cols="2">
           <chat-user-list />
@@ -22,6 +31,7 @@ import ChatNavbar from '../components/ChatNavbar'
 import ChatRoomList from '../components/ChatRoomList'
 import ChatMessageList from '../components/ChatMessageList'
 import ChatUserList from '../components/ChatUserList'
+import ChatMessageForm from '../components/ChatMessageForm'
 
 export default {
   name: 'chat',
@@ -29,7 +39,8 @@ export default {
     ChatNavbar,
     ChatRoomList,
     ChatMessageList,
-    ChatUserList
+    ChatUserList,
+    ChatMessageForm
   }
 }
 </script>
