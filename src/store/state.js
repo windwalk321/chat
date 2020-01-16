@@ -15,5 +15,25 @@ export default {
   ],
   activeRoom: {
     id: '11'
-  }
+  },
+  messages: [
+    {
+      name: 'First User',
+      username: 'first',
+      date: '11/12/1234',
+      text: 'Hi guys!'
+    },
+    {
+      name: 'Second User',
+      username: 'second',
+      date: '11/12/1234',
+      text: 'Hello!'
+    },
+    {
+      name: 'First User',
+      username: 'first',
+      date: '11/12/1234',
+      text: 'sup?'
+    }
+  ]
 }

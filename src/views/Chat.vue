@@ -1,10 +1,13 @@
 <template>
   <div class="chat">
     <chat-navbar />
-    <b-container fluid>
-      <b-row>
+    <b-container class="chat-actions p-0">
+      <b-row no-gutters>
         <b-col cols="2">
           <chat-room-list />
+        </b-col>
+        <b-col cols="8">
+          <chat-message-list />
         </b-col>
       </b-row>
     </b-container>
@@ -14,12 +17,14 @@
 <script>
 import ChatNavbar from '../components/ChatNavbar'
 import ChatRoomList from '../components/ChatRoomList'
+import ChatMessageList from '../components/ChatMessageList'
 
 export default {
   name: 'chat',
   components: {
     ChatNavbar,
-    ChatRoomList
+    ChatRoomList,
+    ChatMessageList
   }
 }
 </script>
