@@ -35,5 +35,17 @@ export default {
       date: '11/12/1234',
       text: 'sup?'
     }
+  ],
+  users: [
+    {
+      username: 'first',
+      name: 'First User',
+      presence: 'online'
+    },
+    {
+      username: 'second',
+      name: 'Second User',
+      presence: 'offline'
+    }
   ]
 }
