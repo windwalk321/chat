@@ -1,11 +1,30 @@
 <template>
   <div class="chat">
-    <h1>This is an chat page</h1>
+    <chat-navbar />
+    <b-container class="chat-actions p-0">
+      <b-row no-gutters>
+        <b-col cols="2">
+          <chat-room-list />
+        </b-col>
+        <b-col cols="8">
+          <chat-message-list />
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script>
+import ChatNavbar from '../components/ChatNavbar'
+import ChatRoomList from '../components/ChatRoomList'
+import ChatMessageList from '../components/ChatMessageList'
+
 export default {
-  name: 'chat'
+  name: 'chat',
+  components: {
+    ChatNavbar,
+    ChatRoomList,
+    ChatMessageList
+  }
 }
 </script>
