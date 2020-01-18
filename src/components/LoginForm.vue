@@ -1,10 +1,11 @@
 <template>
-  <b-form class="mx-auto">
-    <label class="sr-only" for="inline-form-input-username">Username</label>
+  <b-form @submit.prevent="onSubmit" class="mx-auto">
+    <b-alert v-if="error" show variant="danger">{{ error }}</b-alert>
     <b-input-group prepend="@">
-      <b-input id="inline-form-input-username" placeholder="Username"></b-input>
+      <b-input v-model="username" id="form-input-username" placeholder="Username"></b-input>
     </b-input-group>
     <b-button
+      type="submit"
       variant="primary"
       class="float-right mt-2"
     >Login</b-button>
@@ -12,7 +13,30 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
-  name: 'loginForm'
+  name: 'loginForm',
+  data () {
+    return {
+      username: ''
+    }
+  },
+  computed: {
+    ...mapState([
+      'error'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'login'
+    ]),
+    async onSubmit () {
+      const user = await this.login(this.username)
+      if (user) {
+        this.$router.push('/chat')
+      }
+    }
+  }
 }
 </script>
