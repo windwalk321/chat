@@ -1,8 +1,19 @@
 /* eslint-disable */
+import store from './store'
+import * as types from './store/mutation-types'
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client'
 
 let currentUser
 let activeRoom
+
+function setMembers () {
+  const members = activeRoom.users.map(user => ({
+    username: user.id,
+    name: user.name,
+    presence: user.presence.state
+  }))
+  store.commit(types.SET_USERS, members)
+}
 
 async function connectUser (userId) {
   const chatManager = new ChatManager({
@@ -17,8 +28,13 @@ async function connectUser (userId) {
 async function subscribeToRoom (roomId) {
   activeRoom = await currentUser.subscribeToRoomMultipart({
     roomId,
-    hooks: {}
+    hooks: {
+      onPresenceChanged: () => {
+        setMembers()
+      }
+    }
   })
+  setMembers()
   return activeRoom
 }
 

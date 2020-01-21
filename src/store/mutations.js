@@ -12,5 +12,8 @@ export default {
   },
   [types.SET_ROOMS] (state, rooms) {
     state.rooms = rooms
+  },
+  [types.SET_USERS] (state, users) {
+    state.users = users
   }
 }
