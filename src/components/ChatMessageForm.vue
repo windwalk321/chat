@@ -1,7 +1,9 @@
 <template>
-  <b-form>
+  <b-form @submit.prevent="onSubmit">
+    <b-alert v-if="error" show variant="danger">{{ error }}</b-alert>
     <b-form-group>
       <b-form-input
+        v-model.trim="message"
         id="form-input-text"
         placeholder="Write a message..."
       ></b-form-input>
@@ -13,7 +15,25 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
-  name: 'chatMessageForm'
+  name: 'chatMessageForm',
+  data () {
+    return {
+      message: ''
+    }
+  },
+  methods: {
+    ...mapActions([
+      'sendMessage'
+    ]),
+    async onSubmit () {
+      const message = await this.sendMessage(this.message)
+      if (message) {
+        this.message = ''
+      }
+    }
+  }
 }
 </script>

@@ -15,5 +15,8 @@ export default {
   },
   [types.SET_USERS] (state, users) {
     state.users = users
+  },
+  [types.ADD_MESSAGE] (state, message) {
+    state.messages.push(message)
   }
 }
