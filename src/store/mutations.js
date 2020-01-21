@@ -18,5 +18,9 @@ export default {
   },
   [types.ADD_MESSAGE] (state, message) {
     state.messages.push(message)
+  },
+  [types.CLEAR_ROOM] (state) {
+    state.users = []
+    state.messages = []
   }
 }

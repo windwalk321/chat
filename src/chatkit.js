@@ -26,6 +26,7 @@ async function connectUser (userId) {
 }
 
 async function subscribeToRoom (roomId) {
+  store.commit(types.CLEAR_ROOM)
   activeRoom = await currentUser.subscribeToRoomMultipart({
     roomId,
     hooks: {
@@ -39,7 +40,6 @@ async function subscribeToRoom (roomId) {
           text: message.parts[0].payload.content,
           date: new Date(message.createdAt).toString()
         })
-        console.log(message)
       }
     }
   })
