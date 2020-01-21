@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'chatMessageForm',
@@ -23,6 +23,11 @@ export default {
     return {
       message: ''
     }
+  },
+  computed: {
+    ...mapState([
+      'error'
+    ])
   },
   methods: {
     ...mapActions([

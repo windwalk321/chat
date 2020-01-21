@@ -38,5 +38,14 @@ export default {
     } catch (error) {
       commit(types.SET_ERROR, error.info.error_description)
     }
+  },
+
+  async changeRoom ({ commit }, roomId) {
+    try {
+      const { id, name } = await chatkit.subscribeToRoom(roomId)
+      commit(types.SET_ACTIVE_ROOM, { id, name })
+    } catch (error) {
+      commit(types.SET_ERROR, error.info.error_description)
+    }
   }
 }

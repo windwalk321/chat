@@ -2,6 +2,7 @@
   <b-list-group class="pt-1" flush>
     <b-list-group-item
       v-for="room in rooms"
+      @click="onChange(room)"
       :key="room.id"
       :active="activeRoom.id === room.id"
       href="#"
@@ -12,7 +13,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'chatRoomList',
@@ -21,6 +22,14 @@ export default {
       'rooms',
       'activeRoom'
     ])
+  },
+  methods: {
+    ...mapActions([
+      'changeRoom'
+    ]),
+    onChange (room) {
+      this.changeRoom(room.id)
+    }
   }
 }
 </script>
