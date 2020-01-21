@@ -1,7 +1,8 @@
 /* eslint-disable */
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client'
 
-let currentUser = null
+let currentUser
+let activeRoom
 
 async function connectUser (userId) {
   const chatManager = new ChatManager({
@@ -13,6 +14,15 @@ async function connectUser (userId) {
   return currentUser
 }
 
+async function subscribeToRoom (roomId) {
+  activeRoom = await currentUser.subscribeToRoomMultipart({
+    roomId,
+    hooks: {}
+  })
+  return activeRoom
+}
+
 export default {
-  connectUser
+  connectUser,
+  subscribeToRoom
 }
