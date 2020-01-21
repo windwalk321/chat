@@ -31,6 +31,15 @@ async function subscribeToRoom (roomId) {
     hooks: {
       onPresenceChanged: () => {
         setMembers()
+      },
+      onMessage: message => {
+        store.commit(types.ADD_MESSAGE, {
+          name: message.sender.name,
+          username: message.senderId,
+          text: message.parts[0].payload.content,
+          date: new Date(message.createdAt).toString()
+        })
+        console.log(message)
       }
     }
   })
@@ -38,7 +47,17 @@ async function subscribeToRoom (roomId) {
   return activeRoom
 }
 
+async function sendMessage (text) {
+  const message = currentUser.sendSimpleMessage({
+    roomId: activeRoom.id,
+    text
+  })
+
+  return message
+}
+
 export default {
   connectUser,
-  subscribeToRoom
+  subscribeToRoom,
+  sendMessage
 }

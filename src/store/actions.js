@@ -28,5 +28,15 @@ export default {
     } catch (error) {
       commit(types.SET_ERROR, error.info.error_description)
     }
+  },
+
+  async sendMessage ({ commit }, message) {
+    try {
+      commit(types.SET_ERROR, null)
+      const userMessage = await chatkit.sendMessage(message)
+      return userMessage
+    } catch (error) {
+      commit(types.SET_ERROR, error.info.error_description)
+    }
   }
 }

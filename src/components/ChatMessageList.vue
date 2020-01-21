@@ -31,6 +31,11 @@ export default {
 </script>
 
 <style scoped>
+.message-list {
+  height: 60vh !important;
+  overflow-y: scroll;
+  margin-bottom: 10px;
+}
 .message-title {
   display: inline;
 }
