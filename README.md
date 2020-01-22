@@ -1,4 +1,5 @@
 Chat application with basic functionality powered by [Chatkit SDK].
+
 [Chatkit SDK]: https://pusher.com/chatkit
 
 
