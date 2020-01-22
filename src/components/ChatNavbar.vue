@@ -6,13 +6,13 @@
     </a>
     <div class="ml-auto">
       <span class="nav-item">{{ user.username }} | </span>
-      <a href="#" class="nav-item">Logout</a>
+      <a @click="onLogout" href="#" class="nav-item">Logout</a>
     </div>
   </nav>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'ChatNavbar',
@@ -20,6 +20,15 @@ export default {
     ...mapState([
       'user'
     ])
+  },
+  methods: {
+    ...mapActions([
+      'logout'
+    ]),
+    onLogout () {
+      this.logout()
+      this.$router.push({ path: '/' })
+    }
   }
 }
 </script>

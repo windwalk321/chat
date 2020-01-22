@@ -56,8 +56,13 @@ async function sendMessage (text) {
   return message
 }
 
+function disconnectUser() {
+  currentUser.disconnect()
+}
+
 export default {
   connectUser,
   subscribeToRoom,
-  sendMessage
+  sendMessage,
+  disconnectUser
 }

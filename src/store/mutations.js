@@ -22,5 +22,13 @@ export default {
   [types.CLEAR_ROOM] (state) {
     state.users = []
     state.messages = []
+  },
+  [types.RESET] (state) {
+    state.error = null
+    state.users = []
+    state.messages = []
+    state.rooms = []
+    state.user = null
+    state.activeRoom = null
   }
 }

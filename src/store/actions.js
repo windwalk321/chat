@@ -47,5 +47,10 @@ export default {
     } catch (error) {
       commit(types.SET_ERROR, error.info.error_description)
     }
+  },
+
+  async logout ({ commit }) {
+    chatkit.disconnectUser()
+    commit(types.RESET)
   }
 }
